@@ -1,180 +1,206 @@
-# Mindcraft 🧠⛏️
+# Zen Minecraft AI ⚡🧠⛏️
 
-Crafting minds for Minecraft with LLMs and [Mineflayer!](https://prismarinejs.github.io/mineflayer/#/)
+> An enlightened Minecraft AI bot powered by Claude Sonnet 4.5, O3-mini reasoning, and cosmic energy
 
-[FAQ](https://github.com/mindcraft-bots/mindcraft/blob/main/FAQ.md) | [Discord Support](https://discord.gg/mp73p35dzC) | [Video Tutorial](https://www.youtube.com/watch?v=gRotoL8P8D8) | [Blog Post](https://kolbynottingham.com/mindcraft/) | [Contributor TODO](https://github.com/users/kolbytn/projects/1) | [Paper Website](https://mindcraft-minecollab.github.io/index.html) | [MineCollab](https://github.com/mindcraft-bots/mindcraft/blob/main/minecollab.md) 
+Based on [Mindcraft](https://github.com/mindcraft-bots/mindcraft) - A multi-model LLM framework for intelligent Minecraft bots.
 
+![Zen AI Character](./assets/characters/zen-ai-avatar.png)
 
-> [!Caution]
-Do not connect this bot to public servers with coding enabled. This project allows an LLM to write/execute code on your computer. The code is sandboxed, but still vulnerable to injection attacks. Code writing is disabled by default, you can enable it by setting `allow_insecure_coding` to `true` in `settings.js`. Ye be warned.
+## About Zen
 
-## Requirements
+Zen is an advanced Minecraft AI that combines:
+- **Claude Sonnet 4.5** for conversational intelligence and decision-making
+- **OpenAI O3-mini** for complex reasoning and code generation
+- **GPT-4o** for vision interpretation
+- A cosmic personality that's wise, powerful, and helpful
 
-- [Minecraft Java Edition](https://www.minecraft.net/en-us/store/minecraft-java-bedrock-edition-pc) (up to v1.21.6, recommend v1.21.6)
-- [Node.js Installed](https://nodejs.org/) (at least v18)
-- One of these: [OpenAI API Key](https://openai.com/blog/openai-api) | [Gemini API Key](https://aistudio.google.com/app/apikey) | [Anthropic API Key](https://docs.anthropic.com/claude/docs/getting-access-to-claude) | [Replicate API Key](https://replicate.com/) | [Hugging Face API Key](https://huggingface.co/) | [Groq API Key](https://console.groq.com/keys) | [Ollama Installed](https://ollama.com/download). | [Mistral API Key](https://docs.mistral.ai/getting-started/models/models_overview/) | [Qwen API Key [Intl.]](https://www.alibabacloud.com/help/en/model-studio/developer-reference/get-api-key)/[[cn]](https://help.aliyun.com/zh/model-studio/getting-started/first-api-call-to-qwen?) | [Novita AI API Key](https://novita.ai/settings?utm_source=github_mindcraft&utm_medium=github_readme&utm_campaign=link#key-management) | [Cerebras API Key](https://cloud.cerebras.ai) | [Mercury API](https://platform.inceptionlabs.ai/docs)
+Zen appears as a blue enlightened being with electric wings of lightning and fire, ready to help you build, survive, and achieve greatness in Minecraft.
 
-## Install and Run
+## Quick Start
 
-1. Make sure you have the requirements above.
+### Prerequisites
+- [Minecraft Java Edition](https://www.minecraft.net/) (v1.21.6 recommended)
+- [Node.js](https://nodejs.org/) v18 or higher
+- API Keys:
+  - **ANTHROPIC_API_KEY** (required for Zen's main personality)
+  - **OPENAI_API_KEY** (required for O3-mini reasoning and vision)
 
-2. Clone or download this repository (big green button) 'git clone https://github.com/mindcraft-bots/mindcraft.git'
+### Installation
 
-3. Rename `keys.example.json` to `keys.json` and fill in your API keys (you only need one). The desired model is set in `andy.json` or other profiles. For other models refer to the table below.
-
-4. In terminal/command prompt, run `npm install` from the installed directory
-
-5. Start a minecraft world and open it to LAN on localhost port `55916`
-
-6. Run `node main.js` from the installed directory
-
-If you encounter issues, check the [FAQ](https://github.com/mindcraft-bots/mindcraft/blob/main/FAQ.md) or find support on [discord](https://discord.gg/mp73p35dzC). We are currently not very responsive to github issues. To run tasks please refer to [Minecollab Instructions](minecollab.md#installation)
-
-## Tasks
-
-Bot performance can be roughly evaluated with Tasks. Tasks automatically intialize bots with a goal to acquire specific items or construct predefined buildings, and remove the bot once the goal is achieved.
-
-To run tasks, you need python, pip, and optionally conda. You can then install dependencies with `pip install -r requirements.txt`. 
-
-Tasks are defined in json files in the `tasks` folder, and can be run with: `python tasks/run_task_file.py --task_path=tasks/example_tasks.json`
-
-For full evaluations, you will need to [download and install the task suite. Full instructions.](minecollab.md#installation)
-
-## Model Customization
-
-You can configure project details in `settings.js`. [See file.](settings.js)
-
-You can configure the agent's name, model, and prompts in their profile like `andy.json` with the `model` field. For comprehensive details, see [Model Specifications](#model-specifications).
-
-| API | Config Variable | Example Model name | Docs |
-|------|------|------|------|
-| `openai` | `OPENAI_API_KEY` | `gpt-4o-mini` | [docs](https://platform.openai.com/docs/models) |
-| `google` | `GEMINI_API_KEY` | `gemini-2.0-flash` | [docs](https://ai.google.dev/gemini-api/docs/models/gemini) |
-| `anthropic` | `ANTHROPIC_API_KEY` | `claude-3-haiku-20240307` | [docs](https://docs.anthropic.com/claude/docs/models-overview) |
-| `xai` | `XAI_API_KEY` | `grok-2-1212` | [docs](https://docs.x.ai/docs) |
-| `deepseek` | `DEEPSEEK_API_KEY` | `deepseek-chat` | [docs](https://api-docs.deepseek.com/) |
-| `ollama` (local) | n/a | `ollama/sweaterdog/andy-4:micro-q8_0` | [docs](https://ollama.com/library) |
-| `qwen` | `QWEN_API_KEY` | `qwen-max` | [Intl.](https://www.alibabacloud.com/help/en/model-studio/developer-reference/use-qwen-by-calling-api)/[cn](https://help.aliyun.com/zh/model-studio/getting-started/models) |
-| `mistral` | `MISTRAL_API_KEY` | `mistral-large-latest` | [docs](https://docs.mistral.ai/getting-started/models/models_overview/) |
-| `replicate` | `REPLICATE_API_KEY` | `replicate/meta/meta-llama-3-70b-instruct` | [docs](https://replicate.com/collections/language-models) |
-| `groq` (not grok) | `GROQCLOUD_API_KEY` | `groq/mixtral-8x7b-32768` | [docs](https://console.groq.com/docs/models) |
-| `huggingface` | `HUGGINGFACE_API_KEY` | `huggingface/mistralai/Mistral-Nemo-Instruct-2407` | [docs](https://huggingface.co/models) |
-| `novita` | `NOVITA_API_KEY` | `novita/deepseek/deepseek-r1` | [docs](https://novita.ai/model-api/product/llm-api?utm_source=github_mindcraft&utm_medium=github_readme&utm_campaign=link) |
-| `openrouter` | `OPENROUTER_API_KEY` | `openrouter/anthropic/claude-3.5-sonnet` | [docs](https://openrouter.ai/models) |
-| `glhf.chat` | `GHLF_API_KEY` | `glhf/hf:meta-llama/Llama-3.1-405B-Instruct` | [docs](https://glhf.chat/user-settings/api) |
-| `hyperbolic` | `HYPERBOLIC_API_KEY` | `hyperbolic/deepseek-ai/DeepSeek-V3` | [docs](https://docs.hyperbolic.xyz/docs/getting-started) |
-| `vllm` | n/a | `vllm/llama3` | n/a |
-| `cerebras` | `CEREBRAS_API_KEY` | `cerebras/llama-3.3-70b` | [docs](https://inference-docs.cerebras.ai/introduction) |
-| `mercury` | `MERCURY_API_KEY` | `mercury-coder-small` | [docs](https://www.inceptionlabs.ai/) |
-
-If you use Ollama, to install the models used by default (generation and embedding), execute the following terminal command:
-`ollama pull sweaterdog/andy-4:micro-q8_0 && ollama pull embeddinggemma`
-
-To use Azure, you can reuse the `OPENAI_API_KEY` environment variable. You can get the key from the Azure portal. See [azure.json](profiles/azure.json) for an example.
-
-### Online Servers
-To connect to online servers your bot will need an official Microsoft/Minecraft account. You can use your own personal one, but will need another account if you want to connect too and play with it. To connect, change these lines in `settings.js`:
-```javascript
-"host": "111.222.333.444",
-"port": 55920,
-"auth": "microsoft",
-
-// rest is same...
-```
-> [!Important]
-> The bot's name in the profile.json must exactly match the Minecraft profile name! Otherwise the bot will spam talk to itself.
-
-To use different accounts, Mindcraft will connect with the account that the Minecraft launcher is currently using. You can switch accounts in the launcer, then run `node main.js`, then switch to your main account after the bot has connected.
-
-### Docker Container
-
-If you intend to `allow_insecure_coding`, it is a good idea to run the app in a docker container to reduce risks of running unknown code. This is strongly recommended before connecting to remote servers.
-
+1. Clone this repository:
 ```bash
-docker run -i -t --rm -v $(pwd):/app -w /app -p 3000-3003:3000-3003 node:latest node main.js
+git clone git@github.com:toddllm/zen-mincraft-ai.git
+cd zen-mincraft-ai
 ```
-or simply
+
+2. Install dependencies:
+```bash
+npm install
+```
+
+3. Configure your API keys in `keys.json`:
+```json
+{
+    "ANTHROPIC_API_KEY": "your-anthropic-key-here",
+    "OPENAI_API_KEY": "your-openai-key-here"
+}
+```
+
+4. Start a Minecraft world and open it to LAN on port **55916**
+
+5. Run Zen:
+```bash
+npm start
+```
+
+## Configuration
+
+### Zen Profile (`zen.json`)
+
+The Zen character is configured with:
+- **Conversational Model**: Claude Sonnet 4.5 (superior reasoning and personality)
+- **Code Generation**: OpenAI O3-mini (advanced reasoning for complex tasks)
+- **Vision**: GPT-4o (screenshot interpretation)
+- **Personality**: Wise, powerful, mystical yet practical
+
+### Settings (`settings.js`)
+
+Key settings:
+- `allow_insecure_coding: true` - Enables advanced code generation (sandboxed)
+- `allow_vision: true` - Enables screenshot analysis
+- `base_profile: "assistant"` - Helpful assistant mode
+- Bot connects to `localhost:55916` by default
+
+## Zen's Capabilities
+
+### Building & Construction
+Zen can build complex structures using advanced planning:
+```
+"Zen, build me an epic cathedral"
+"Create a fortified base with redstone defenses"
+"Design a Japanese garden with pagoda"
+```
+
+### Survival & Resource Management
+```
+"Help me survive the night"
+"Gather iron and diamonds"
+"Set up an automatic farm"
+```
+
+### Combat & Defense
+```
+"Protect me from mobs"
+"Build defensive walls"
+"Attack that zombie"
+```
+
+### Teaching & Guidance
+```
+"Teach me advanced building techniques"
+"Show me how to use redstone"
+"Explain enchanting mechanics"
+```
+
+## Development with SPARC
+
+This project follows the SPARC (Specification, Pseudocode, Architecture, Refinement, Completion) methodology for systematic development.
+
+See [CLAUDE.md](./CLAUDE.md) for detailed development instructions.
+
+## Project Structure
+
+```
+zen-mincraft-ai/
+├── src/                    # Core bot source code
+│   ├── agent/             # Agent logic and commands
+│   ├── models/            # LLM integrations
+│   └── utils/             # Utilities and helpers
+├── profiles/              # Bot personality profiles
+│   └── zen.json          # Zen's configuration
+├── assets/
+│   └── characters/       # Character images and skins
+├── settings.js           # Main configuration
+├── keys.json            # API keys (gitignored)
+└── main.js              # Entry point
+```
+
+## Advanced Features
+
+### Multi-Agent Collaboration
+Run multiple bots simultaneously:
+```bash
+node main.js --profiles ./profiles/zen.json ./profiles/claude.json
+```
+
+### Custom Tasks
+Run predefined tasks:
+```bash
+python tasks/run_task_file.py --task_path=tasks/example_tasks.json
+```
+
+### Vision Mode
+Zen can analyze screenshots when vision is enabled:
+```
+"Zen, look at this and tell me what you see"
+"Analyze this structure"
+```
+
+### Code Generation
+Zen can write custom JavaScript code for complex actions:
+```javascript
+await skills.buildStructure(bot, 'castle', {width: 20, height: 30});
+```
+
+## Security Notes
+
+⚠️ **Important**:
+- `allow_insecure_coding` is enabled for advanced features
+- Code execution is sandboxed but still has risks
+- Never connect to untrusted public servers with coding enabled
+- Consider running in Docker for additional isolation
+
+### Docker Setup
 ```bash
 docker-compose up
 ```
 
-When running in docker, if you want the bot to join your local minecraft server, you have to use a special host address `host.docker.internal` to call your localhost from inside your docker container. Put this into your [settings.js](settings.js):
+## API Cost Optimization
 
-```javascript
-"host": "host.docker.internal", // instead of "localhost", to join your local minecraft from inside the docker container
+Zen uses a tiered model approach to optimize costs:
+- Claude Sonnet 4.5: Main conversations (efficient pricing)
+- O3-mini: Complex reasoning only when needed
+- GPT-4o: Vision analysis when requested
+
+## Upstream & Updates
+
+This project is forked from Mindcraft. To pull updates:
+
+```bash
+# Fetch upstream changes
+git fetch upstream
+
+# Merge upstream updates
+git merge upstream/main
 ```
 
-To connect to an unsupported minecraft version, you can try to use [viaproxy](services/viaproxy/README.md)
+## Contributing
 
-# Bot Profiles
+Contributions welcome! Please:
+1. Fork the repository
+2. Create a feature branch
+3. Follow SPARC methodology (see CLAUDE.md)
+4. Submit a pull request
 
-Bot profiles are json files (such as `andy.json`) that define:
+## Support & Community
 
-1. Bot backend LLMs to use for talking, coding, and embedding.
-2. Prompts used to influence the bot's behavior.
-3. Examples help the bot perform tasks.
+- **Issues**: [GitHub Issues](https://github.com/toddllm/zen-mincraft-ai/issues)
+- **Original Mindcraft**: [Discord](https://discord.gg/mp73p35dzC)
+- **Original Repository**: [mindcraft-bots/mindcraft](https://github.com/mindcraft-bots/mindcraft)
 
-## Model Specifications
+## Citation
 
-LLM models can be specified simply as `"model": "gpt-4o"`. However, you can use different models for chat, coding, and embeddings. 
-You can pass a string or an object for these fields. A model object must specify an `api`, and optionally a `model`, `url`, and additional `params`.
-
-```json
-"model": {
-  "api": "openai",
-  "model": "gpt-4o",
-  "url": "https://api.openai.com/v1/",
-  "params": {
-    "max_tokens": 1000,
-    "temperature": 1
-  }
-},
-"code_model": {
-  "api": "openai",
-  "model": "gpt-4",
-  "url": "https://api.openai.com/v1/"
-},
-"vision_model": {
-  "api": "openai",
-  "model": "gpt-4o",
-  "url": "https://api.openai.com/v1/"
-},
-"embedding": {
-  "api": "openai",
-  "url": "https://api.openai.com/v1/",
-  "model": "text-embedding-ada-002"
-},
-"speak_model": {
-  "api": "openai",
-  "url": "https://api.openai.com/v1/",
-  "model": "tts-1",
-  "voice": "echo"
-}
-
-```
-
-`model` is used for chat, `code_model` is used for newAction coding, `vision_model` is used for image interpretation, and `embedding` is used to embed text for example selection. If `code_model` or `vision_model` is not specified, `model` will be used by default. Not all APIs support embeddings or vision.
-
-All apis have default models and urls, so those fields are optional. The `params` field is optional and can be used to specify additional parameters for the model. It accepts any key-value pairs supported by the api. Is not supported for embedding models.
-
-## Embedding Models
-
-Embedding models are used to embed and efficiently select relevant examples for conversation and coding.
-
-Supported Embedding APIs: `openai`, `google`, `replicate`, `huggingface`, `novita`
-
-If you try to use an unsupported model, then it will default to a simple word-overlap method. Expect reduced performance, recommend mixing APIs to ensure embedding support.
-
-## Specifying Profiles via Command Line
-
-By default, the program will use the profiles specified in `settings.js`. You can specify one or more agent profiles using the `--profiles` argument: `node main.js --profiles ./profiles/andy.json ./profiles/jill.json`
-
-## Patches
-
-Some of the node modules that we depend on have bugs in them. To add a patch, change your local node module file and run `npx patch-package [package-name]`
-
-## Citation:
-
+Based on Mindcraft:
 ```
 @article{mindcraft2025,
   title = {Collaborating Action by Action: A Multi-agent LLM Framework for Embodied Reasoning},
@@ -185,4 +211,10 @@ Some of the node modules that we depend on have bugs in them. To add a patch, ch
 }
 ```
 
+## License
 
+MIT License - See LICENSE file for details
+
+---
+
+**Zen awaits your command. Build. Create. Transcend. ⚡**

@@ -1,0 +1,5 @@
+{
+    "name": "Zen",
+
+    "model": "ollama/gpt-oss:20b"
+}
