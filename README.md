@@ -1,207 +1,323 @@
 # Zen Minecraft AI ⚡🧠⛏️
 
-> An enlightened Minecraft AI bot powered by Claude Sonnet 4.5, O3-mini reasoning, and cosmic energy
+> An enlightened Minecraft AI bot powered by **100% local models** - No API keys, no costs, fully private!
 
 Based on [Mindcraft](https://github.com/mindcraft-bots/mindcraft) - A multi-model LLM framework for intelligent Minecraft bots.
 
-![Zen AI Character](./assets/characters/zen-ai-avatar.png)
+## 🎮 See Zen in Action!
 
-## About Zen
+![Zen AI Character Avatar](./assets/characters/zen-ai-avatar.png)
 
-Zen is an advanced Minecraft AI that combines:
-- **Claude Sonnet 4.5** for conversational intelligence and decision-making
-- **OpenAI O3-mini** for complex reasoning and code generation
-- **GPT-4o** for vision interpretation
-- A cosmic personality that's wise, powerful, and helpful
+*Zen - A cosmic entity with electric wings, ready to build and create!*
 
-Zen appears as a blue enlightened being with electric wings of lightning and fire, ready to help you build, survive, and achieve greatness in Minecraft.
+![Zen's First Spawn in Minecraft](./docs/screenshots/zen-first-spawn.png)
 
-## Quick Start
+*Zen successfully spawned and built a house autonomously in Minecraft 1.20.4*
+
+## ✨ What Makes Zen Special
+
+Zen is an advanced Minecraft AI that runs **100% locally** using Ollama:
+
+- 🤖 **gpt-oss:20b** - 20 billion parameter model for reasoning and code generation
+- 👁️ **minicpm-v** - Vision model for screenshot analysis
+- 💰 **$0 Cost** - No API fees, unlimited usage
+- 🔒 **Private** - All data stays on your machine
+- ⚡ **Fast** - 3-5 second response times
+- 🏗️ **Autonomous** - Generates and executes JavaScript code to build structures
+
+### First Test Results
+
+**Command**: "build a house"
+
+**Result**: Zen autonomously:
+- Generated complex JavaScript with spatial logic
+- Built a 5x5 house with walls, windows, and roof
+- Placed 150+ blocks in ~2 minutes
+- Handled terrain obstacles intelligently
+
+📖 [Read the full first run report](./docs/FIRST_SUCCESSFUL_RUN.md)
+
+## 🚀 Quick Start
 
 ### Prerequisites
-- [Minecraft Java Edition](https://www.minecraft.net/) (v1.21.6 recommended)
-- [Node.js](https://nodejs.org/) v18 or higher
-- API Keys:
-  - **ANTHROPIC_API_KEY** (required for Zen's main personality)
-  - **OPENAI_API_KEY** (required for O3-mini reasoning and vision)
+
+- [Minecraft Java Edition](https://www.minecraft.net/) (v1.20.4 - 1.21.5 recommended)
+- [Node.js](https://nodejs.org/) v18 or higher (v20+ recommended)
+- [Ollama](https://ollama.com/) installed and running
+- **No API keys required!**
 
 ### Installation
 
-1. Clone this repository:
+1. **Clone this repository:**
 ```bash
 git clone git@github.com:toddllm/zen-mincraft-ai.git
 cd zen-mincraft-ai
 ```
 
-2. Install dependencies:
+2. **Install Ollama models:**
+```bash
+# Main AI model (20B parameters)
+ollama pull gpt-oss:20b
+
+# Vision model (optional but recommended)
+ollama pull minicpm-v
+
+# Embedding model (optional - has known issues, not critical)
+ollama pull mxbai-embed-large
+```
+
+3. **Install dependencies:**
 ```bash
 npm install
 ```
 
-3. Configure your API keys in `keys.json`:
-```json
-{
-    "ANTHROPIC_API_KEY": "your-anthropic-key-here",
-    "OPENAI_API_KEY": "your-openai-key-here"
-}
-```
+4. **Start Minecraft:**
+- Launch Minecraft Java Edition (version 1.20.4 - 1.21.5)
+- Create or load a world
+- Press ESC → "Open to LAN"
+- Note the port (should be 55916)
+- Click "Start LAN World"
 
-4. Start a Minecraft world and open it to LAN on port **55916**
-
-5. Run Zen:
+5. **Launch Zen:**
 ```bash
 npm start
 ```
 
-## Configuration
+You should see Zen join your world and announce: *"Here and ready. What do you need help with today?"*
 
-### Zen Profile (`zen.json`)
-
-The Zen character is configured with:
-- **Conversational Model**: Claude Sonnet 4.5 (superior reasoning and personality)
-- **Code Generation**: OpenAI O3-mini (advanced reasoning for complex tasks)
-- **Vision**: GPT-4o (screenshot interpretation)
-- **Personality**: Wise, powerful, mystical yet practical
-
-### Settings (`settings.js`)
-
-Key settings:
-- `allow_insecure_coding: true` - Enables advanced code generation (sandboxed)
-- `allow_vision: true` - Enables screenshot analysis
-- `base_profile: "assistant"` - Helpful assistant mode
-- Bot connects to `localhost:55916` by default
-
-## Zen's Capabilities
+## 🎯 What Can Zen Do?
 
 ### Building & Construction
-Zen can build complex structures using advanced planning:
 ```
-"Zen, build me an epic cathedral"
-"Create a fortified base with redstone defenses"
-"Design a Japanese garden with pagoda"
-```
-
-### Survival & Resource Management
-```
-"Help me survive the night"
-"Gather iron and diamonds"
-"Set up an automatic farm"
+"build a house"
+"create a tower"
+"make a bridge across this gap"
 ```
 
-### Combat & Defense
+### Resource Gathering
 ```
-"Protect me from mobs"
-"Build defensive walls"
-"Attack that zombie"
-```
-
-### Teaching & Guidance
-```
-"Teach me advanced building techniques"
-"Show me how to use redstone"
-"Explain enchanting mechanics"
+"collect 32 oak logs"
+"mine some iron ore"
+"gather cobblestone"
 ```
 
-## Development with SPARC
-
-This project follows the SPARC (Specification, Pseudocode, Architecture, Refinement, Completion) methodology for systematic development.
-
-See [CLAUDE.md](./CLAUDE.md) for detailed development instructions.
-
-## Project Structure
-
+### Navigation & Exploration
 ```
-zen-mincraft-ai/
-├── src/                    # Core bot source code
-│   ├── agent/             # Agent logic and commands
-│   ├── models/            # LLM integrations
-│   └── utils/             # Utilities and helpers
-├── profiles/              # Bot personality profiles
-│   └── zen.json          # Zen's configuration
-├── assets/
-│   └── characters/       # Character images and skins
-├── settings.js           # Main configuration
-├── keys.json            # API keys (gitignored)
-└── main.js              # Entry point
+"come here"
+"follow me"
+"go to coordinates x:100, y:64, z:200"
 ```
 
-## Advanced Features
+### Autonomous Tasks
+```
+"set a goal to gather resources and build a base"
+"survive and collect food"
+```
 
-### Multi-Agent Collaboration
-Run multiple bots simultaneously:
+## ⚙️ Configuration
+
+### Current Setup (Ollama Local Models)
+
+**zen.json**:
+```json
+{
+    "name": "Zen",
+    "model": "ollama/gpt-oss:20b"
+}
+```
+
+**profiles/zen.json** includes:
+- **Main Model**: `ollama/gpt-oss:20b` (conversations, reasoning, code)
+- **Vision**: `ollama/minicpm-v` (screenshot analysis)
+- **Embeddings**: Fallback word-overlap (mxbai-embed-large has 404 issues)
+- **TTS**: System voice (macOS/Windows built-in)
+
+### Alternative Models
+
+Want faster responses? Try smaller models:
+
 ```bash
-node main.js --profiles ./profiles/zen.json ./profiles/claude.json
+# Faster but less capable
+ollama pull llama3.1:8b
+
+# Then update zen.json:
+{
+    "model": "ollama/llama3.1:8b"
+}
 ```
 
-### Custom Tasks
-Run predefined tasks:
+Want maximum power? Use the 120B model:
+
 ```bash
-python tasks/run_task_file.py --task_path=tasks/example_tasks.json
+ollama pull gpt-oss:120b  # Warning: 65GB download!
 ```
 
-### Vision Mode
-Zen can analyze screenshots when vision is enabled:
-```
-"Zen, look at this and tell me what you see"
-"Analyze this structure"
-```
+## 📊 Performance
 
-### Code Generation
-Zen can write custom JavaScript code for complex actions:
+### Response Times (gpt-oss:20b)
+- **Chat**: 3-5 seconds
+- **Code generation**: 5-8 seconds
+- **Building execution**: ~2 minutes for complete house
+
+### Resource Usage
+- **RAM**: ~16GB during active use
+- **GPU**: Automatic (Metal/CUDA)
+- **Disk**: ~13GB for gpt-oss:20b model
+
+## 🔧 Advanced Configuration
+
+### Multi-Agent Setup
+
+Run multiple bots:
+
 ```javascript
-await skills.buildStructure(bot, 'castle', {width: 20, height: 30});
+// settings.js
+"profiles": [
+    "./profiles/zen.json",
+    "./profiles/zen-fast.json"  // Different model for each
+]
 ```
 
-## Security Notes
+### Docker Deployment
 
-⚠️ **Important**:
-- `allow_insecure_coding` is enabled for advanced features
-- Code execution is sandboxed but still has risks
-- Never connect to untrusted public servers with coding enabled
-- Consider running in Docker for additional isolation
+For additional security (recommended if using code generation):
 
-### Docker Setup
 ```bash
 docker-compose up
 ```
 
-## API Cost Optimization
+### Vision Mode
 
-Zen uses a tiered model approach to optimize costs:
-- Claude Sonnet 4.5: Main conversations (efficient pricing)
-- O3-mini: Complex reasoning only when needed
-- GPT-4o: Vision analysis when requested
+Enable screenshot analysis:
 
-## Upstream & Updates
+```javascript
+// settings.js
+"allow_vision": true
+```
 
-This project is forked from Mindcraft. To pull updates:
+Then in-game:
+```
+"Zen, look at this structure and describe it"
+```
+
+## 📖 Documentation
+
+- [OLLAMA_SETUP.md](./OLLAMA_SETUP.md) - Complete local model setup guide
+- [MINECRAFT_SETUP.md](./MINECRAFT_SETUP.md) - Minecraft version compatibility
+- [SETUP.md](./SETUP.md) - Detailed setup instructions
+- [FIRST_SUCCESSFUL_RUN.md](./docs/FIRST_SUCCESSFUL_RUN.md) - First test results with logs
+- [CLAUDE.md](./CLAUDE.md) - SPARC development methodology
+
+## 🐛 Troubleshooting
+
+### Bot won't connect
+- Ensure Minecraft is "Open to LAN" on port 55916
+- Check Ollama is running: `ollama list`
+- Verify Minecraft version is 1.20.4 - 1.21.5
+
+### Slow responses
+- Use smaller model: `llama3.1:8b`
+- Close other GPU-intensive apps
+- Reduce `max_messages` in settings.js
+
+### Embedding errors (non-critical)
+- These are normal and don't affect functionality
+- Bot falls back to word-overlap matching
+- Fix planned for future update
+
+### Out of memory
+- Use smaller model
+- Close other applications
+- Reduce context length in settings.js
+
+## 💡 Known Issues
+
+⚠️ **Embedding Model 404 Errors** (Non-critical)
+- `mxbai-embed-large` returns 404 from Ollama API
+- Bot automatically falls back to word-overlap
+- Does not affect core functionality
+- Fix planned for future release
+
+## 🔒 Security
+
+**Code Generation Enabled**: Zen can write and execute JavaScript code on your machine.
+
+✅ **Safe for local testing**
+⚠️ **Never connect to untrusted servers with coding enabled**
+🐳 **Consider Docker for additional isolation**
+
+## 💰 Cost Comparison
+
+### Traditional Cloud Setup
+- GPT-4o: ~$0.06 per task
+- ~$1.20 per hour of active use
+- Rate limits apply
+- Requires internet
+
+### Zen (Our Setup)
+- **$0.00 per task**
+- **$0.00 per hour**
+- **No rate limits**
+- **Works offline**
+
+**Savings**: 100% cost reduction! ♾️
+
+## 🌟 Success Stories
+
+> *"Said 'build a house' - it generated JavaScript with loops, broke terrain obstacles, placed 150+ blocks, and announced 'House finished!' All in 2 minutes."* - First test run
+
+## 📦 Project Structure
+
+```
+zen-mincraft-ai/
+├── src/                    # Core Mindcraft source
+│   ├── agent/             # Bot logic and commands
+│   ├── models/            # LLM integrations
+│   └── utils/             # Utilities
+├── profiles/              # Bot personalities
+│   └── zen.json          # Zen's full config
+├── assets/
+│   └── characters/       # Character images
+├── docs/                 # Documentation
+│   ├── screenshots/      # In-game screenshots
+│   └── FIRST_SUCCESSFUL_RUN.md
+├── zen.json              # Zen's simple config
+├── settings.js           # Main settings
+└── main.js              # Entry point
+```
+
+## 🔄 Upstream Updates
+
+This project is forked from Mindcraft:
 
 ```bash
 # Fetch upstream changes
 git fetch upstream
 
-# Merge upstream updates
+# Merge updates
 git merge upstream/main
 ```
 
-## Contributing
+## 🤝 Contributing
 
-Contributions welcome! Please:
+Contributions welcome!
+
 1. Fork the repository
 2. Create a feature branch
 3. Follow SPARC methodology (see CLAUDE.md)
 4. Submit a pull request
 
-## Support & Community
+## 🔗 Links
 
 - **Issues**: [GitHub Issues](https://github.com/toddllm/zen-mincraft-ai/issues)
-- **Original Mindcraft**: [Discord](https://discord.gg/mp73p35dzC)
-- **Original Repository**: [mindcraft-bots/mindcraft](https://github.com/mindcraft-bots/mindcraft)
+- **Original Mindcraft**: [GitHub](https://github.com/mindcraft-bots/mindcraft) | [Discord](https://discord.gg/mp73p35dzC)
+- **Ollama**: [ollama.com](https://ollama.com/)
 
-## Citation
+## 📝 Citation
 
-Based on Mindcraft:
-```
+Based on Mindcraft research:
+
+```bibtex
 @article{mindcraft2025,
   title = {Collaborating Action by Action: A Multi-agent LLM Framework for Embodied Reasoning},
   author = {White*, Isadora and Nottingham*, Kolby and Maniar, Ayush and Robinson, Max and Lillemark, Hansen and Maheshwari, Mehul and Qin, Lianhui and Ammanabrolu, Prithviraj},
@@ -211,10 +327,21 @@ Based on Mindcraft:
 }
 ```
 
-## License
+## 📄 License
 
 MIT License - See LICENSE file for details
 
 ---
 
+## 🚀 Ready to Start?
+
+1. Install Ollama and pull `gpt-oss:20b`
+2. Clone this repo and run `npm install`
+3. Start Minecraft and open to LAN
+4. Run `npm start`
+
 **Zen awaits your command. Build. Create. Transcend. ⚡**
+
+---
+
+*Made with ❤️ using 100% local AI • No cloud • No costs • No limits*
